@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--dowding-->
+<head>
+	<meta charset=utf-8>
+        <meta property="fb:admins" content="524747714" />
+	<meta name="color:Background" content="#f6f5ec"/>
+	<meta name="color:Link" content="#ba0b00"/>
+	<meta name="color:Link Visited" content="#d4674b"/>
+	<meta name="color:Border" content="#c8c49f"/>
+
+	<meta name="if:Show Avatar" content="1"/>
+	<meta name="if:Show People I Follow" content="1"/>
+	
+	<meta name="text:Disqus Shortname" content="" />
+
+<title>{block:PostTitle}{PostTitle} | {/block:PostTitle}{Title}</title>
+
+	<title>{block:SearchPage}Search results for: {SearchQuery} | {/block:SearchPage}{block:PostSummary}{PostSummary} | {/block:PostSummary}{Title}</title>
+	{block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
+	<link rel="alternate" type="application/rss+xml" href="{RSS}" />
+	<link rel="shortcut icon" href="{Favicon}">
+
+ 	<style type="text/css">
+
+		/* simple reset */
+		*  { vertical-align: baseline; font-family: inherit;font-style: inherit;font-size: 100%;border: none;padding: 0;margin: 0; }
+		h1, h2, h3, h4, h5, h6, p, pre, blockquote, form, ul, ol, dl { margin: 0 0 20px 0; }
+		li, dd, blockquote { margin-left: 40px; }
+		table { border-collapse: collapse; border-spacing: 0; }
+
+		/* play nice with html5 */
+		header, footer, nav, section, article { display:block; }
+
+		/* new clearfix */
+		.clearfix:after, #container:after, article:after, section#myLikes:after
+		{ visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
+		.clearfix, #container, article, section#myLikes
+		{ zoom: 1; }
+
+	</style>
+	<style type="text/css">
+
+		body
+		{
+			font: 1em/1.3 Georgia,"Times New Roman",Times,serif;
+			background: {color:Background};
+		}
+
+		a
+		{
+			color: {color:Link};
+		}
+
+		a:visited
+		{
+			color: {color:Link Visited};
+		}
+		
+		a:hover
+		{
+			color: {color:Link};
+		}
+		
+		nav ul
+		{
+			margin: 1em 0;
+			padding-top: 1em;
+			border-top: 1px solid {color:Border};
+		}
+
+		h1
+		{
+			font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+		}
+
+		h1 a,
+		h1 a:visited
+		{
+			text-decoration: none;
+			color: {color:Link};
+		}
+
+		code { font-family: monospace; }
+
+		em { font-style: italic; }
+
+		p.small { font-size: .8em; }
+
+		body>header
+		{
+			padding: .5em;
+			margin-bottom: 2em;
+			background: {color:Link};
+			border-bottom: 2px solid {color:Border};
+		}
+		
+		body>header h1
+		{
+			margin: 0 10px;
+			font-size: 2em;
+		}
+
+		body>header a,
+		body>header a:visited
+		{
+			color: white;
+		}
+		
+		
+		#banner, #container
+		{
+			width: 915px;
+			margin: 0 auto;
+			overflow: hidden;
+		}
+
+		#secondary, #primary, #myLikes
+		{
+			margin: 0 10px;
+			overflow: hidden;
+			float: left;
+			display: inline;
+		}
+		
+		#primary
+		{
+			width:535px;
+		}
+
+			article
+			{
+				background: white;
+				padding: 1em;
+				margin-bottom: 1em;
+				border: 1px solid {color:Border};
+			}
+			
+				article header p
+				{
+					display: block;
+					font: .6em "Helvetica Neue",Helvetica,Arial,sans-serif;
+					text-transform: uppercase;
+					margin: 0 0 1em 0;
+					color: silver;
+				}
+
+					article header p a,
+					article header p a:visited
+					{
+						text-decoration: none;
+						color: silver;
+					}
+
+					article header time
+					{
+						font-weight: bold;
+					}
+
+				article header h1
+				{
+					font-size: 1.5em;
+					line-height: 1em;
+					margin-top: 0;
+				}
+
+				article blockquote
+				{
+					border-left: 2px dotted silver;
+					padding-left: 1em;
+					margin-left: 1em;
+				}
+				
+                article section.notes
+                {
+                    font: "Helvetica Neue",Helvetica,Arial,sans-serif;
+                }
+				article section.notes ol.notes
+				{
+					font: .8em "Helvetica Neue",Helvetica,Arial,sans-serif;
+					margin: 0;
+				}
+
+					article section.notes ol.notes li
+					{
+							list-style: none;
+							margin: 0;
+							padding: .5em 0;
+							border-top: 1px solid whitesmoke;
+					}
+
+					article section.notes ol.notes li img
+					{
+						vertical-align: middle;
+						border: 2px solid silver;
+					}
+
+				article footer
+				{
+					font: .8em "Helvetica Neue",Helvetica,Arial,sans-serif;
+					border-top: 1px solid whitesmoke;
+					padding-top: 1em;
+				}
+
+					article footer a,
+					article footer a:visited
+					{
+						text-decoration: none;
+						color: gray;
+					}
+
+					article footer ul
+					{
+						margin: 0;
+					}
+
+						article footer ul li
+						{
+							list-style: none;
+							display: inline;
+							margin: 0 4px 0 0;
+							color: gray;
+						}
+
+						article footer ul li.reblogged,
+						article footer ul li.notes,
+						article footer ul li.tagged
+						{
+							padding-left: 18px;
+							background-repeat: no-repeat;
+						}
+
+						article footer ul li.reblogged
+						{
+							background-image: url('http://static.tumblr.com/pwgidgy/xKal11o10/reblog.png');
+						}
+
+						article footer ul li.notes
+						{
+							background-image: url('http://static.tumblr.com/pwgidgy/1n1l11n7i/notes.png');
+						}
+
+						article footer ul li.tagged
+						{
+							background-image: url('http://static.tumblr.com/pwgidgy/XgAl11o29/tags.png');
+						}
+
+							article footer ul li.tagged a:after
+							{
+								content: ",";
+							}
+
+							article footer ul li.tagged a:last-child:after
+							{
+								content: "";
+							}
+
+
+							article.quote blockquote {
+								position:relative;
+								padding:1em;
+								margin: 0;
+								font: 1.5em "Marker Felt", Georgia,"Times New Roman",Times,serif;
+								border: none;
+								background:whitesmoke;
+
+								-moz-border-radius:10px;
+								-webkit-border-radius:10px;
+								border-radius:10px;
+							}
+
+							article.quote blockquote + p {margin:10px 0 1em 60px; font-style:italic;}
+
+							article.quote blockquote:after {
+								content:"\00a0";
+								display:block; /* reduce the damage in FF3.0 */
+								position:absolute;
+								bottom:-40px;
+								left:25px;
+								width:0;
+								height:0;
+								border-width:0 20px 40px 0px;
+								border-style:solid;
+								border-color:transparent whitesmoke;
+							}
+
+				article.photo div.photo
+				{
+					text-align: center;
+					padding-bottom: 1em;
+				}
+
+				article.chat
+				{
+				}
+			
+					article.chat p
+					{
+						margin: 0;
+						padding: 1em;
+					}
+				
+					article.chat p.odd
+					{
+						background: whitesmoke;
+					}
+
+				article.answer 
+				{
+					font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+				}
+
+					article.answer div.question
+					{
+						padding: 1em;
+						background: whitesmoke;
+						border: 5px solid whitesmoke;
+						margin: 1em 0;
+					}
+					
+					article.answer div.answer
+					{
+						margin: 1em 0;
+						padding: 1em;
+						border: 5px solid whitesmoke;
+					}
+					
+					article.answer div.answer p:last-child
+					{
+						margin-bottom: 0;
+					}
+					
+					article.answer div.by
+					{
+						font-weight: bold;
+					}
+					
+				article.audio
+				{
+				}
+					article.audio div.player
+					{
+						margin: 1em 0;
+					}
+
+		#secondary
+		{
+			width:160px;
+		}
+			#secondary nav ul
+			{
+				font: .9em "Helvetica Neue",Helvetica,Arial,sans-serif;
+			}
+
+			#secondary nav ul a
+			{
+				text-decoration: none;
+			}
+
+			#secondary nav li
+			{
+				margin: 0 0 2px 20px;
+			}
+
+			#paging
+			{
+				text-align: center;
+				margin: 60px auto;
+			}
+
+			#myLikes
+			{
+				width:160px;
+				font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+			}
+			
+				#myLikes h1
+				{
+					margin-bottom: 5px;
+				}
+			
+				#myLikes #searchField
+				{
+					font-size: .8em;
+					border: 1px solid {color:Border};
+					padding: 4px 4px 4px 20px;
+					width: 134px;
+					-moz-border-radius: 12px; -webkit-border-radius: 12px; border-radius: 12px;
+					background: white url('http://static.tumblr.com/pwgidgy/jbel15m9e/search.png') no-repeat 2px center;
+				}
+				
+				#myLikes blockquote,
+				#myLikes p
+				{
+					margin: 0;
+				}
+
+				#myLikes li
+				{
+					list-style: none;
+					font-size: .7em;
+					margin: 0 0 1em 0;
+				}
+
+					#myLikes li:last-child
+					{
+						margin: 0;
+					}
+
+					#myLikes li img
+					{
+						max-width: 160px;
+						background: white;
+					}
+
+					#myLikes li.like_post .post_info_top 
+					{
+						display: block !important;
+						font-size: 1.2em;
+						color: black;
+						margin-bottom: 10px;
+						padding: 5px 0;
+						border-bottom: 1px solid {color:Border};
+					}
+
+					#myLikes li.like_post .post_info_top a
+					{
+						color: black;
+						text-decoration: none;
+						font-weight: bold;
+					}
+					
+				
+				#myLikes #following li
+				{
+					display: inline;
+				}
+
+		body>footer
+		{
+			border-bottom: 3em solid {color:Link};
+		}	
+{CustomCSS}
+	</style>
+
+	<!--Make IE like HTML5-->
+	<!--[if IE]><script>document.createElement("header");document.createElement("footer");document.createElement("nav");document.createElement("article");document.createElement("section");</script>	<![endif]-->
+
+</head>
+
+<body>
+
+	<header>
+		<div id="banner">
+			<h1><a href="/">{Title}</a></h1>
+		</div>
+	</header>
+
+	<div id="container" class="row">
+
+		<section id="secondary">
+
+			{block:IfShowAvatar}
+			<img src="{PortraitURL-128}">
+			{/block:IfShowAvatar}
+
+			<div>
+				{Description}
+			</div>
+
+			<nav>
+			{block:HasPages}
+				<hr>
+
+				<ul id="pages">
+					{block:Pages}
+					<li><a href="{URL}">{Label}</a></li>
+					{/block:Pages}
+				</ul>
+			{/block:HasPages}
+
+				<ul>
+					{block:AskEnabled}
+					<li><a href="/ask">{AskLabel}</a></li>
+					{/block:AskEnabled}
+					<li><a href="/archive">Archive</a></li>
+					<li><a href="/mobile">Mobile</a></li>
+					<li><a href="{RSS}">RSS</a></li>
+				</ul>
+
+				<p class="small">Powered by <a href="http://www.tumblr.com">Tumblr</a>. <br>Theme by <a href="http://scott.dowding.ca/generic-html5-theme">Scott</a>.</p>
+
+			</nav>
+
+		</section>
+
+		<section id="primary">
+
+            {block:SearchPage}
+                <h1>{SearchResultCount} results for <strong>"{SearchQuery}"</strong></h1>
+            {/block:SearchPage}
+
+			{block:Posts}
+
+			{block:Text}
+			<article class="text">
+				<header>
+					<p><a href="{Permalink}">{block:Date}<time datetime="{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}" pubdate>{Month} {DayOfMonthWithZero}, {Year}</time>{/block:Date}</a> &bull; Text Post</p>
+					{block:Title}
+				    <h1><a href="{Permalink}">{Title}</a></h1>
+					{/block:Title}
+				</header>
+				{Body}
+			{/block:Text}
+
+			{block:Photo}
+			<article class="photo">
+				<header>
+					<p><a href="{Permalink}">{block:Date}<time datetime="{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}" pubdate>{Month} {DayOfMonthWithZero}, {Year}</time>{/block:Date}</a> &bull; Photo Post</p>
+				</header>
+
+				<div class="photo">
+					{LinkOpenTag}
+					<img src="{PhotoURL-500}" alt="{PhotoAlt}" />
+					{LinkCloseTag}
+				</div>
+
+				{block:Caption}
+				{Caption}
+				{/block:Caption}
+			{/block:Photo}
+
+			{block:Quote}
+			<article class="quote">
+				<header>
+					<p><a href="{Permalink}">{block:Date}<time datetime="{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}" pubdate>{Month} {DayOfMonthWithZero}, {Year}</time>{/block:Date}</a> &bull; Quote Post</p>
+				</header>
+
+				<blockquote>"{Quote}"</blockquote>
+				{block:Source}
+				<p>{Source}</p>
+				{/block:Source}
+			{/block:Quote}
+
+			{block:Link}
+			<article class="link">
+				<header>
+					<p><a href="{Permalink}">{block:Date}<time datetime="{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}" pubdate>{Month} {DayOfMonthWithZero}, {Year}</time>{/block:Date}</a> &bull; Link Post</p>
+				    <h1><a href="{URL}" {Target}>{Name} &rarr;</a></h1>
+				</header>
+				{block:Description}
+					{Description}
+				{/block:Description}
+			{/block:Link}
+			
+			{block:Answer}
+				<article class="answer">
+					<header>
+						<p><a href="{Permalink}">{block:Date}<time datetime="{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}" pubdate>{Month} {DayOfMonthWithZero}, {Year}</time>{/block:Date}</a> &bull; Answer Post</p>
+					</header>
+					<div class="by">
+						{Asker} asked ...
+					</div>
+					<div class="question">
+						{Question}
+					</div>
+					<div class="by">
+						... and I answered
+					</div>
+					<div class="answer">
+						{Answer}
+					</div>
+			{/block:Answer}
+			
+			{block:Chat}
+			<article class="chat">
+				<header>
+					<p><a href="{Permalink}">{block:Date}<time datetime="{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}" pubdate>{Month} {DayOfMonthWithZero}, {Year}</time>{/block:Date}</a> &bull; Chat Post</p>
+					{block:Title}<h1><a href="{Permalink}">{Title}</a></h1>{/block:Title}
+				</header>
+				{block:Lines}
+				<p class="chat-line {Alt}">{block:Label}<strong>{Label}</strong>{/block:Label} {Line}</p>
+				{/block:Lines}
+			{/block:Chat}
+
+			{block:Video}
+			<article class="video">
+				<header>
+					<p><a href="{Permalink}">{block:Date}<time datetime="{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}" pubdate>{Month} {DayOfMonthWithZero}, {Year}</time>{/block:Date}</a> &bull; Video Post</p>
+				</header>
+
+				{Video-500}
+
+				{block:Caption}
+				{Caption}
+				{/block:Caption}
+			{/block:Video}
+			
+			{block:Photoset}
+			<article class="photoset">
+				<header>
+					<p><a href="{Permalink}">{block:Date}<time datetime="{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}" pubdate>{Month} {DayOfMonthWithZero}, {Year}</time>{/block:Date}</a> &bull; Photoset Post</p>
+				</header>
+
+				{Photoset-500}
+
+				{block:Caption}
+				{Caption}
+				{/block:Caption}
+			{/block:Photoset}
+
+			{block:Audio}
+			<article class="audio">
+				<header>
+					<p><a href="{Permalink}">{block:Date}<time datetime="{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}" pubdate>{Month} {DayOfMonthWithZero}, {Year}</time>{/block:Date}</a> &bull; Audio Post</p>
+				</header>
+
+				{block:AlbumArt}
+				<img src="{AlbumArtURL}" alt="{block:Artist}{Artist}{/block:Artist}{block:TrackName} - {TrackName}{/block:TrackName}" />
+				{/block:AlbumArt}
+                    
+				<div class="player">{AudioPlayerGrey}</div>
+				
+				<p>{PlayCountWithLabel}</p>
+				{block:ExternalAudio}
+				<p><a href="{ExternalAudioURL}">Download</a></p>
+				{/block:ExternalAudio}
+				{block:Caption}{Caption}{/block:Caption}
+			{/block:Audio}
+
+            	{block:Permalink}
+				<section class="notes">
+					{block:PostNotes}
+					<h1>Notes</h1>
+					{PostNotes}
+					{/block:PostNotes}
+
+					{block:IfDisqusShortname}
+					<h1>Comments</h1>
+					<script type="text/javascript">var disqus_url = "{Permalink}"; var disqus_title ="{block:PostTitle}{PostTitle}{/block:PostTitle}";</script>
+					<div id="disqus_thread"></div>
+					<script type="text/javascript">
+					  (function() {
+					   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+					   dsq.src = 'http://{text:Disqus Shortname}.disqus.com/embed.js';
+					   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+					  })();
+					</script>
+					<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript={text:Disqus Shortname}">comments powered by Disqus.</a></noscript>
+					<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+                    {/block:IfDisqusShortname}
+				</section>
+                {/block:Permalink}
+
+				<footer>
+					<ul>
+
+						{block:RebloggedFrom}
+						<li class="reblogged"><a href="{ReblogParentURL}" title="Reblogged from {ReblogParentName}">Reblogged</a></li>
+						{/block:RebloggedFrom}
+
+						<li class="notes">
+	                        {block:NoteCount}
+	                        <a href="{Permalink}#notes">{NoteCountWithLabel}</a>, 
+							{/block:NoteCount}
+							{block:IfDisqusShortname}
+							<a href="{Permalink}#disqus_thread">comments</a>
+							{/block:IfDisqusShortname}
+                        </li>
+						{block:HasTags}
+						<li class="tagged">{block:Tags}<a href="{TagURL}">{Tag}</a> {/block:Tags}</li>
+						{/block:HasTags}
+					</ul>
+                    <ul style="margin-top:15px">
+
+						<li>
+							<iframe 
+								src="http://platform.twitter.com/widgets/tweet_button.html?url={Permalink}{block:PostSummary}&text={PostSummary}{/block:PostSummary}&via=sdowding"
+								allowtransparency="true" 
+								frameborder="0" 
+								scrolling="no"
+								style="border:none; overflow:hidden; width:60px; height:20px;"
+								></iframe>
+						</li>
+						<li>
+							<iframe 
+								src="http://www.facebook.com/plugins/like.php?href={Permalink}&amp;layout=button_count&amp;show_faces=true&amp;width=90&amp;action=like&amp;colorscheme=light&amp;height=21" 
+								allowTransparency="true"
+								frameborder="0" 
+								scrolling="no" 
+								style="border:none; overflow:hidden; width:90px; height:20px;" 
+								></iframe>
+						</li>
+                    </ul>
+				</footer>
+
+			</article>    
+
+			{/block:Posts}
+
+			{block:Pagination}
+			<nav id="paging">
+				<p>Page {CurrentPage} of {TotalPages}</p>
+
+				{block:NextPage}
+				<a href="{NextPage}">&larr; Older</a>
+				{/block:NextPage}
+				{block:PreviousPage}
+				<a href="{PreviousPage}">Newer &rarr;</a>
+				{/block:PreviousPage}
+			</nav>
+			{/block:Pagination}
+
+		</section>
+		<section id="myLikes" class="column grid_3">
+
+			<form id="searchForm" action="/search" method="get">
+				<input id="searchField" type="text" name="q" value="{SearchQuery}" />
+			</form>
+
+			{block:Likes}
+				<h1>Stuff I Like <a href="http://www.tumblr.com/liked/by/dowding">&hearts;</a></h1>
+				{Likes limit="5" summarize="100" width="160"}
+			{/block:Likes}
+
+			{block:IfShowPeopleIFollow}
+			{block:Following}
+			<h1>Following</h1>
+			<ul id="following">
+			{block:Followed}<li><a href="{FollowedURL}" title="{FollowedTitle}"><img src="{FollowedPortraitURL-24}" /></a></li>{/block:Followed}
+			</ul>
+			{/block:Following}
+			{/block:IfShowPeopleIFollow}
+
+		</section>
+	</div>	
+
+	<footer>
+	</footer>
+	
+	{block:IfDisqusShortname}
+	<script type="text/javascript">
+	var disqus_shortname = '{text:Disqus Shortname}';
+	(function () {
+	  var s = document.createElement('script'); s.async = true;
+	  s.src = 'http://disqus.com/forums/{text:Disqus Shortname}/count.js';
+	  (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+	}());
+	</script>
+    {/block:IfDisqusShortname}
+</html>
